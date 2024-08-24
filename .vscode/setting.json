@@ -1,0 +1,23 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "eslint.useFlatConfig": true,
+  "editor.formatOnSave": false,
+  "eslint.validate": [
+    "svelte",
+    "astro",
+    "html",
+    "css",
+    "less",
+    "scss",
+    "json",
+    "jsonc",
+    "yaml",
+    "yml",
+    "markdown",
+    "toml"
+  ],
+  "prettier.enable": false
+}
