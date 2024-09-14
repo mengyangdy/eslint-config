@@ -1,6 +1,12 @@
-import { readFile } from 'node:fs/promises'
+import {readFile} from 'node:fs/promises'
 import path from 'node:path'
-import {PartialPrettierExtendedOptions} from "@/types";
+import {PartialPrettierExtendedOptions, Awaitable} from "@/types";
+
+
+export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { default: infer U } ? U : T> {
+  const resolved = await m
+  return (resolved as any).default || resolved
+}
 
 export async function loadPrettierConfig(cwd: string) {
   let prettierConfig: PartialPrettierExtendedOptions = {}
@@ -9,7 +15,8 @@ export async function loadPrettierConfig(cwd: string) {
     const prettierrc = await readFile(path.join(cwd, '.prettierrc'), 'utf-8')
 
     prettierConfig = JSON.parse(prettierrc)
-  } catch {}
+  } catch {
+  }
 
   return prettierConfig
 }
