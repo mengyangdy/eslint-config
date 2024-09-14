@@ -1,4 +1,4 @@
-import type { PartialPrettierExtendedOptions } from '../types'
+import type { PartialPrettierExtendedOptions } from '@/types'
 
 export const DEFAULT_PRETTIER_RULES: PartialPrettierExtendedOptions = {
   printWidth: 120,
