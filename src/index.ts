@@ -1,6 +1,6 @@
 import type {Awaitable, FlatConfigItem, Options} from './types'
 import {createOptions} from "@/options";
-import {createJsConfig, createNodeConfig} from "@/configs";
+import {createImportConfig, createJsConfig, createNodeConfig} from "@/configs";
 import {getOverridesRules} from "@/shared";
 
 export async function defineConfig(options: Partial<Options> = {},...userConfigs: Awaitable<FlatConfigItem>[]){
@@ -15,11 +15,13 @@ export async function defineConfig(options: Partial<Options> = {},...userConfigs
 
   const js=createJsConfig(overrideRecord.js)
   const node = await createNodeConfig(overrideRecord.n)
+  const imp = await createImportConfig(overrideRecord.import)
 
   return [
     ignore,
     ...js,
-    ...node
+    ...node,
+    ...imp
   ] as FlatConfigItem[]
 }
 
