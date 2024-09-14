@@ -17,7 +17,6 @@ import type { JsdocOptions } from 'prettier-plugin-jsdoc'
 
 import type { BuiltInParserName, LiteralUnion, RequiredOptions } from 'prettier'
 
-
 export type PrettierCustomParser = 'astro' | 'svelte' | 'jsdoc-parser' | 'toml'
 
 export type PrettierParser = BuiltInParserName | PrettierCustomParser
@@ -40,9 +39,7 @@ export type FlatConfigItem = Omit<FlatESLintConfigItem<EslintFlatRules, false>, 
   plugins?: Record<string, any>
 }
 
-
 export type PartialPrettierExtendedOptions = Partial<PrettierOptions> & Partial<JsdocOptions>
-
 
 export type RuleBaseOptions<T = NonNullable<unknown>> = T & {
   /** The glob patterns to lint */
@@ -58,7 +55,6 @@ export type VueOptions = RuleBaseOptions<{
   version?: 2 | 3
 }>
 
-
 export type RequiredRuleBaseOptions = Required<RuleBaseOptions>
 
 export type OnDemandRuleKey = 'vue' | 'react' | 'react-native' | 'solid' | 'svelte' | 'astro'
@@ -68,6 +64,5 @@ export type OnDemandRuleOptions = Partial<Record<Exclude<OnDemandRuleKey, 'vue'>
 export type RequiredVueOptions = Required<VueOptions>
 
 export type RequiredOnDemandRuleOptions = Record<Exclude<OnDemandRuleKey, 'vue'>, RequiredRuleBaseOptions>
-
 
 export type { FlatGitignoreOptions }

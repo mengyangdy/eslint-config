@@ -1,18 +1,17 @@
 import type {
   FlatConfigItem,
   FlatGitignoreOptions,
+  OnDemandRuleKey,
+  OnDemandRuleOptions,
   PartialPrettierExtendedOptions,
   PrettierParser,
-  VueOptions,
-  OnDemandRuleOptions,
   RequiredOnDemandRuleOptions,
-  RequiredVueOptions,
   RequiredRuleBaseOptions,
-  OnDemandRuleKey
+  RequiredVueOptions,
+  VueOptions
 } from './rule'
 
 export type Awaitable<T> = T | Promise<T>
-
 
 export interface BaseOptions {
   /**
@@ -80,17 +79,14 @@ export interface BaseOptions {
 export type Options = Partial<BaseOptions> & {
   vue?: VueOptions | boolean
 } & OnDemandRuleOptions & {
-  unocss?: boolean
-}
+    unocss?: boolean
+  }
 
 export type ParsedOptions = BaseOptions & {
   vue?: RequiredVueOptions
 } & Partial<RequiredOnDemandRuleOptions> & {
-  unocss?: boolean
-}
-
-
-
+    unocss?: boolean
+  }
 
 export type {
   FlatConfigItem,

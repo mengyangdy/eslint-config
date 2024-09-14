@@ -1,8 +1,8 @@
-import type { OnDemandRuleKey, Options, ParsedOptions, RequiredRuleBaseOptions, RequiredVueOptions } from '@/types'
 import process from 'node:process'
-import {GLOB_ASTRO, GLOB_EXCLUDE, GLOB_JSX, GLOB_SVELTE, GLOB_TSX, GLOB_VUE} from "@/constants/glob";
-import {DEFAULT_PRETTIER_RULES} from "@/constants/prettier";
-import {loadPrettierConfig} from "@/shared";
+import type { OnDemandRuleKey, Options, ParsedOptions, RequiredRuleBaseOptions, RequiredVueOptions } from '@/types'
+import { GLOB_ASTRO, GLOB_EXCLUDE, GLOB_JSX, GLOB_SVELTE, GLOB_TSX, GLOB_VUE } from '@/constants/glob'
+import { DEFAULT_PRETTIER_RULES } from '@/constants/prettier'
+import { loadPrettierConfig } from '@/shared'
 
 export async function createOptions(options: Partial<Options> = {}) {
   const opts: ParsedOptions = {
@@ -21,7 +21,7 @@ export async function createOptions(options: Partial<Options> = {}) {
     }
   }
 
-  const {cwd, ignores, gitignore, overrides, prettierRules, usePrettierrc, formatter, unocss, ...rest} = options
+  const { cwd, ignores, gitignore, overrides, prettierRules, usePrettierrc, formatter, unocss, ...rest } = options
 
   if (cwd) {
     opts.cwd = cwd
@@ -40,7 +40,7 @@ export async function createOptions(options: Partial<Options> = {}) {
   }
 
   if (prettierRules) {
-    opts.prettierRules = {...opts.prettierRules, ...prettierRules}
+    opts.prettierRules = { ...opts.prettierRules, ...prettierRules }
   }
 
   if (usePrettierrc !== undefined) {

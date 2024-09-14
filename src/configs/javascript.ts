@@ -1,7 +1,7 @@
 import jsRules from '@eslint/js'
 import globals from 'globals'
 import type { FlatConfigItem } from '@/types'
-import {GLOB_SRC, GLOB_SRC_EXT, GLOB_TESTS} from "@/constants/glob";
+import { GLOB_SRC, GLOB_SRC_EXT, GLOB_TESTS } from '@/constants/glob'
 export function createJsConfig(overrides: Record<string, string> = {}) {
   const js: FlatConfigItem[] = [
     {
@@ -34,10 +34,10 @@ export function createJsConfig(overrides: Record<string, string> = {}) {
       },
       rules: {
         ...jsRules.configs.all.rules,
-        'accessor-pairs': ['error', {enforceForClassMembers: true, setWithoutGet: true}],
+        'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
         camelcase: 'off',
         'capitalized-comments': 'off',
-        'dot-notation': ['error', {allowKeywords: true}],
+        'dot-notation': ['error', { allowKeywords: true }],
         'func-style': 'off',
         'id-length': 'off',
         'init-declarations': 'off',
@@ -50,13 +50,13 @@ export function createJsConfig(overrides: Record<string, string> = {}) {
         'multiline-comment-style': 'off',
         semi: [2, 'never'],
         quotes: [1, 'single'],
-        'new-cap': ['error', {newIsCap: true, capIsNew: false, properties: true}],
+        'new-cap': ['error', { newIsCap: true, capIsNew: false, properties: true }],
         'no-console': 'warn',
         'no-duplicate-imports': 'off',
-        'no-empty': ['error', {allowEmptyCatch: true}],
+        'no-empty': ['error', { allowEmptyCatch: true }],
         'no-empty-function': 'off',
         'no-inline-comments': 'off',
-        'no-labels': ['error', {allowLoop: false, allowSwitch: false}],
+        'no-labels': ['error', { allowLoop: false, allowSwitch: false }],
         'no-magic-numbers': 'off',
         'no-mixed-operators': [
           'error',
@@ -72,11 +72,11 @@ export function createJsConfig(overrides: Record<string, string> = {}) {
           }
         ],
         'no-negated-condition': 'off',
-        'no-redeclare': ['error', {builtinGlobals: false}],
+        'no-redeclare': ['error', { builtinGlobals: false }],
         'no-restricted-globals': [
           'error',
-          {message: 'Use `globalThis` instead.', name: 'global'},
-          {message: 'Use `globalThis` instead.', name: 'self'}
+          { message: 'Use `globalThis` instead.', name: 'global' },
+          { message: 'Use `globalThis` instead.', name: 'self' }
         ],
         'no-restricted-properties': [
           'error',
@@ -109,10 +109,10 @@ export function createJsConfig(overrides: Record<string, string> = {}) {
           'TSEnumDeclaration[const=true]',
           'TSExportAssignment'
         ],
-        'no-self-assign': ['error', {props: true}],
+        'no-self-assign': ['error', { props: true }],
         'no-ternary': 'off',
         'no-undefined': 'off',
-        'no-unneeded-ternary': ['error', {defaultAssignment: false}],
+        'no-unneeded-ternary': ['error', { defaultAssignment: false }],
         'no-unused-expressions': [
           'error',
           {
@@ -132,7 +132,7 @@ export function createJsConfig(overrides: Record<string, string> = {}) {
           }
         ],
         'no-useless-assignment': 'off',
-        'no-use-before-define': ['error', {functions: false, classes: false, variables: true}],
+        'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
         'object-shorthand': [
           'error',
           'always',
@@ -158,7 +158,7 @@ export function createJsConfig(overrides: Record<string, string> = {}) {
         ],
         'prefer-destructuring': 'off',
         'prefer-named-capture-group': 'off',
-        'prefer-regex-literals': ['error', {disallowRedundantWrapping: true}],
+        'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
         'require-atomic-updates': 'off',
         'require-await': 'off',
         'require-unicode-regexp': 'off',
@@ -177,7 +177,7 @@ export function createJsConfig(overrides: Record<string, string> = {}) {
           'error',
           'always',
           {
-            line: {markers: ['*package', '!', '/', ',', '=']},
+            line: { markers: ['*package', '!', '/', ',', '='] },
             block: {
               balanced: true,
               markers: ['*package', '!', ',', ':', '::', 'flow-include'],

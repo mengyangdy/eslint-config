@@ -1,10 +1,18 @@
-import type {Awaitable, FlatConfigItem, Options} from './types'
-import {createOptions} from "@/options";
-import {createImportConfig, createJsConfig, createNodeConfig} from "@/configs";
-import {getOverridesRules} from "@/shared";
+import { createOptions } from '@/options'
+import {
+  createFormatterConfig,
+  createGitignoreRule,
+  createImportConfig,
+  createJsConfig,
+  createNodeConfig,
+  createPrettierConfig,
+  createTsConfig
+} from '@/configs'
+import { getOverridesRules } from '@/shared'
+import type { Awaitable, FlatConfigItem, Options } from './types'
 
-export async function defineConfig(options: Partial<Options> = {},...userConfigs: Awaitable<FlatConfigItem>[]){
-  const opts=await createOptions(options)
+export async function defineConfig(options: Partial<Options> = {}, ...userConfigs: Awaitable<FlatConfigItem>[]) {
+  const opts = await createOptions(options)
 
   const ignore: FlatConfigItem = {
     ignores: opts.ignores
@@ -12,17 +20,15 @@ export async function defineConfig(options: Partial<Options> = {},...userConfigs
 
   const overrideRecord = getOverridesRules(opts.overrides)
 
-
-  const js=createJsConfig(overrideRecord.js)
+  const js = createJsConfig(overrideRecord.js)
   const node = await createNodeConfig(overrideRecord.n)
   const imp = await createImportConfig(overrideRecord.import)
+  const gitignore = await createGitignoreRule(opts.gitignore)
+  const ts = await createTsConfig(overrideRecord.ts)
+  const prettier = await createPrettierConfig(opts.prettierRules)
+  const formatter = await createFormatterConfig(opts.formatter, opts.prettierRules)
 
-  return [
-    ignore,
-    ...js,
-    ...node,
-    ...imp
-  ] as FlatConfigItem[]
+  return [ignore, ...js, ...node, ...imp, ...gitignore, ...ts, ...prettier, ...formatter] as FlatConfigItem[]
 }
 
 export * from './types'
