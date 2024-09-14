@@ -1,13 +1,18 @@
 {
   "name": "@dylanjs/eslint-config",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "DylanJS's eslint and prettier",
   "license": "MIT",
   "homepage": "",
   "repository": {},
   "bugs": {},
-  "keywords": ["eslint", "eslint-config", "eslint-config-vue", "prettier"],
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslint-config-vue",
+    "prettier"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -21,20 +26,82 @@
   "main": "index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc --noEmit --skipLibCheck &&tsup",
     "cm": "git add . && dy git-commit",
     "lint": "eslint . --fix",
     "publish-pkg": "npm publish --access public"
   },
+  "peerDependencies": {
+    "@unocss/eslint-config": ">=0.58.0",
+    "eslint": ">=8.40.0",
+    "eslint-plugin-astro": ">=0.30.0",
+    "eslint-plugin-react": ">=7.0.0",
+    "eslint-plugin-react-hooks": ">=4.0.0",
+    "eslint-plugin-react-native": ">=4.0.0",
+    "eslint-plugin-react-refresh": ">=0.4.0",
+    "eslint-plugin-solid": ">=0.10.0",
+    "eslint-plugin-svelte": ">=2.0.0",
+    "eslint-plugin-vue": ">=9.19.0",
+    "prettier-plugin-astro": ">=0.12.0",
+    "prettier-plugin-svelte": ">=3.0.0",
+    "prettier-plugin-toml": ">=2.0.0",
+    "typescript": ">=5.0.0",
+    "vue-eslint-parser": ">=9.3.2"
+  },
+  "peerDependenciesMeta": {
+    "@toml-tools/parser": {
+      "optional": true
+    },
+    "@unocss/eslint-config": {
+      "optional": true
+    },
+    "eslint-plugin-astro": {
+      "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-react-native": {
+      "optional": true
+    },
+    "eslint-plugin-react-refresh": {
+      "optional": true
+    },
+    "eslint-plugin-solid": {
+      "optional": true
+    },
+    "eslint-plugin-svelte": {
+      "optional": true
+    },
+    "eslint-plugin-vue": {
+      "optional": true
+    },
+    "prettier-plugin-astro": {
+      "optional": true
+    },
+    "prettier-plugin-svelte": {
+      "optional": true
+    },
+    "prettier-plugin-toml": {
+      "optional": true
+    },
+    "vue-eslint-parser": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "@antfu/eslint-define-config": "1.23.0-2",
     "@antfu/install-pkg": "^0.4.1",
     "@eslint/js": "^9.10.0",
-    "@types/eslint": "^9.6.1",
-    "@types/eslint__js": "^8.42.3",
     "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
     "eslint-config-flat-gitignore": "^0.3.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-parser-plain": "^0.1.0",
@@ -50,12 +117,19 @@
   },
   "devDependencies": {
     "@dylanjs/cli": "^0.1.0",
+    "@types/eslint": "^9.6.1",
     "@types/eslint-config-prettier": "^6.11.3",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.5.5",
     "@types/prompts": "^2.4.9",
     "eslint": "^9.10.0",
+    "eslint-plugin-vue": "^9.28.0",
     "tsup": "^8.2.4",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.2"
+    "typescript": "^5.5.4",
+    "vue-eslint-parser": "^9.4.3"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }

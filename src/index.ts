@@ -6,7 +6,8 @@ import {
   createJsConfig,
   createNodeConfig,
   createPrettierConfig,
-  createTsConfig
+  createTsConfig,
+  createVueConfig
 } from '@/configs'
 import { getOverridesRules } from '@/shared'
 import type { Awaitable, FlatConfigItem, Options } from './types'
@@ -27,8 +28,24 @@ export async function defineConfig(options: Partial<Options> = {}, ...userConfig
   const ts = await createTsConfig(overrideRecord.ts)
   const prettier = await createPrettierConfig(opts.prettierRules)
   const formatter = await createFormatterConfig(opts.formatter, opts.prettierRules)
+  const vue = await createVueConfig(opts.vue, overrideRecord.vue)
 
-  return [ignore, ...js, ...node, ...imp, ...gitignore, ...ts, ...prettier, ...formatter] as FlatConfigItem[]
+  const userResolved = await Promise.all(userConfigs)
+
+  const configs: FlatConfigItem[] = [
+    ignore,
+    ...js,
+    ...node,
+    ...imp,
+    ...gitignore,
+    ...ts,
+    ...prettier,
+    ...formatter,
+    ...vue,
+    ...userResolved
+  ]
+
+  return configs
 }
 
 export * from './types'
