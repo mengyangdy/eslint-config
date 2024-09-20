@@ -1,18 +1,13 @@
 {
   "name": "@dylanjs/eslint-config",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "DylanJS's eslint and prettier",
   "license": "MIT",
   "homepage": "",
   "repository": {},
   "bugs": {},
-  "keywords": [
-    "eslint",
-    "eslint-config",
-    "eslint-config-vue",
-    "prettier"
-  ],
+  "keywords": ["eslint", "eslint-config", "eslint-config-vue", "prettier"],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -26,12 +21,10 @@
   "main": "index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
-    "build": "tsc --noEmit --skipLibCheck &&tsup",
-    "cm": "git add . && dy git-commit",
+    "build": "tsc --noEmit --skipLibCheck && tsup",
+    "cm": "git add . && dy git-commit -l=zh-cn",
     "lint": "eslint . --fix",
     "publish-pkg": "npm publish --access public"
   },
