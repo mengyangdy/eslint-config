@@ -19,9 +19,9 @@ stats.html
 /cypress/screenshots/
 
 # Editor directories and files
-# .vscode/*
-# !.vscode/extensions.json
-# !.vscode/settings.json
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*

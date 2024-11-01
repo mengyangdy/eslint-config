@@ -1,51 +1,32 @@
-import { createOptions } from '@/options'
-import {
-  createFormatterConfig,
-  createGitignoreRule,
-  createImportConfig,
-  createJsConfig,
-  createNodeConfig,
-  createPrettierConfig,
-  createTsConfig,
-  createVueConfig
-} from '@/configs'
-import { getOverridesRules } from '@/shared'
-import type { Awaitable, FlatConfigItem, Options } from './types'
+import { createOptions } from "./options";
+import { Awaitable, Options, FlatConfigItem } from "./types";
+import { getOverridesRules } from "./shared";
+import { createImportConfig, createGitignoreRule } from "./configs";
 
-export async function defineConfig(options: Partial<Options> = {}, ...userConfigs: Awaitable<FlatConfigItem>[]) {
-  const opts = await createOptions(options)
-
+export async function defineConfig(
+  options: Partial<Options> = {},
+  ...userConfigs: Awaitable<FlatConfigItem>[]
+) {
+  const opts = await createOptions(options);
   const ignore: FlatConfigItem = {
-    ignores: opts.ignores
-  }
+    ignores: opts.ignores,
+  };
 
-  const overrideRecord = getOverridesRules(opts.overrides)
+  const overrideRecord = getOverridesRules(opts.overrides);
 
-  const js = createJsConfig(overrideRecord.js)
-  const node = await createNodeConfig(overrideRecord.n)
-  const imp = await createImportConfig(overrideRecord.import)
-  const gitignore = await createGitignoreRule(opts.gitignore)
-  const ts = await createTsConfig(overrideRecord.ts)
-  const prettier = await createPrettierConfig(opts.prettierRules)
-  const formatter = await createFormatterConfig(opts.formatter, opts.prettierRules)
-  const vue = await createVueConfig(opts.vue, overrideRecord.vue)
+  const gitignore = await createGitignoreRule(opts.gitignore);
+  const imp = await createImportConfig(overrideRecord.import);
 
-  const userResolved = await Promise.all(userConfigs)
+  const userResolved = await Promise.all(userConfigs);
 
   const configs: FlatConfigItem[] = [
-    ignore,
-    ...js,
-    ...node,
-    ...imp,
     ...gitignore,
-    ...ts,
-    ...prettier,
-    ...formatter,
-    ...vue,
-    ...userResolved
-  ]
+    ignore,
+    ...imp,
+    ...userResolved,
+  ];
 
-  return configs
+  return configs;
 }
 
-export * from './types'
+export * from "./types";
