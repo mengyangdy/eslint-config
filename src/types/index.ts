@@ -7,7 +7,8 @@ import type {
   RequiredVueOptions,
   VueOptions,
   RequiredRuleBaseOptions,
-  FlatConfigItem
+  FlatConfigItem,
+  PrettierParser
 } from "./rule";
 
 export type Awaitable<T> = T | Promise<T>;
@@ -46,5 +47,6 @@ export type {
   PartialPrettierExtendedOptions,
   RequiredVueOptions,
   RequiredRuleBaseOptions,
-  FlatConfigItem
+  FlatConfigItem,
+  PrettierParser
 };
