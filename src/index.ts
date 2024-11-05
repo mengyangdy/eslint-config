@@ -1,7 +1,7 @@
 import { createOptions } from "./options";
 import { Awaitable, Options, FlatConfigItem } from "./types";
 import { getOverridesRules } from "./shared";
-import { createImportConfig, createGitignoreRule } from "./configs";
+import { createImportConfig, createGitignoreRule, createNodeConfig } from "./configs";
 
 export async function defineConfig(
   options: Partial<Options> = {},
@@ -16,6 +16,7 @@ export async function defineConfig(
 
   const gitignore = await createGitignoreRule(opts.gitignore);
   const imp = await createImportConfig(overrideRecord.import);
+  const node = await createNodeConfig(overrideRecord.n);
 
   const userResolved = await Promise.all(userConfigs);
 
@@ -23,6 +24,7 @@ export async function defineConfig(
     ...gitignore,
     ignore,
     ...imp,
+    ...node,
     ...userResolved,
   ];
 

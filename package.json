@@ -1,7 +1,7 @@
 {
   "name": "@dylanjs/eslint-config",
   "type": "module",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "DylanJS's eslint and prettier",
   "license": "MIT",
   "homepage": "",
@@ -32,9 +32,10 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint . --fix",
-    "publish": "npm publish --access public",
+    "publish-pkg": "npm publish --access public",
     "typecheck": "tsc --noEmit --skipLibCheck",
-    "cm": "git add . && dy git-commit -l=zh-cn"
+    "cm": "git add . && dy git-commit -l=zh-cn",
+    "release": "dy release && pnpm build && pnpm publish-pkg"
   },
   "peerDependencies": {
     "@unocss/eslint-config": ">=0.58.0",
@@ -98,7 +99,7 @@
     }
   },
   "devDependencies": {
-    "@dylanjs/cli": "^0.1.0",
+    "@dylanjs/cli": "^1.0.1",
     "@types/node": "^22.8.5",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3"
@@ -107,6 +108,7 @@
     "@antfu/eslint-define-config": "1.23.0-2",
     "eslint-config-flat-gitignore": "^0.3.0",
     "eslint-plugin-import-x": "^4.4.0",
+    "eslint-plugin-n": "^17.12.0",
     "prettier": "^3.3.3",
     "prettier-plugin-jsdoc": "^1.3.0"
   }
