@@ -59,7 +59,7 @@ export async function createVueConfig(options?: RequiredVueOptions, overrides: R
         ...tsRules,
         ...pluginVue.configs.base.rules,
         ...vueRules,
-        'vue/block-order': ['warn', { order: ['script', 'template', 'style'] }],
+        'vue/block-order': ['warn', { order: ["template", "script", "style"] }],
         'vue/component-api-style': ['warn', ['script-setup', 'composition']],
         'vue/component-name-in-template-casing': [
           'warn',
