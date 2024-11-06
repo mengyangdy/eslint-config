@@ -1,7 +1,7 @@
 {
   "name": "@dylanjs/eslint-config",
   "type": "module",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "DylanJS's eslint and prettier",
   "license": "MIT",
   "homepage": "",

@@ -47,6 +47,7 @@ export function createJsConfig(overrides:Record<string,string>={}){
         'multiline-comment-style': 'off',
         'new-cap': ['error', { newIsCap: true, capIsNew: false, properties: true }],
         'no-console': 'warn',
+        'no-debugger': 'warn',
         'no-duplicate-imports': 'off',
         'no-empty': ['error', { allowEmptyCatch: true }],
         'no-empty-function': 'off',
@@ -160,7 +161,7 @@ export function createJsConfig(overrides:Record<string,string>={}){
         'sort-imports': [
           'error',
           {
-            allowSeparatedGroups: false,
+            allowSeparatedGroups: true,
             ignoreCase: false,
             ignoreDeclarationSort: true,
             ignoreMemberSort: false,
