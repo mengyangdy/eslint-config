@@ -26,7 +26,6 @@
     "cm": "git add . && dy git-commit -l=zh-cn",
     "lint": "eslint . --fix",
     "ncu": "dy ncu",
-    "prepare": "simple-git-hooks",
     "publish-pkg": "npm publish --access public",
     "release": "dy release",
     "typecheck": "tsc --noEmit --skipLibCheck"
