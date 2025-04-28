@@ -1,11 +1,10 @@
-import { GLOB_SRC, GLOB_SRC_EXT, GLOB_TESTS } from '@/constants/glob'
-import globals from 'globals';
-import jsRules from '@eslint/js';
+import globals from 'globals'
+import jsRules from '@eslint/js'
+import { GLOB_SRC, GLOB_SRC_EXT, GLOB_TESTS } from '../constants/glob'
+import type { FlatConfigItem } from '../types'
 
-import type {FlatConfigItem} from '../types'
-
-export function createJsConfig(overrides:Record<string,string>={}){
-  const js:FlatConfigItem[]=[
+export function createJsConfig(overrides: Record<string, string> = {}) {
+  const js: FlatConfigItem[] = [
     {
       languageOptions: {
         ecmaVersion: 2023,
@@ -197,5 +196,6 @@ export function createJsConfig(overrides:Record<string,string>={}){
       }
     }
   ]
+
   return js
 }

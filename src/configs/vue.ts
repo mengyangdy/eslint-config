@@ -1,36 +1,36 @@
-import { ensurePackages, interopDefault } from '../shared';
-import type { FlatConfigItem, RequiredVueOptions } from '../types';
-import { createTsRules } from './typescript';
+import { ensurePackages, interopDefault } from '../shared'
+import type { FlatConfigItem, RequiredVueOptions } from '../types'
+import { createTsRules } from './typescript'
 
 export async function createVueConfig(options?: RequiredVueOptions, overrides: Record<string, string> = {}) {
-  if (!options) return [];
+  if (!options) return []
 
-  const { version, files } = options;
+  const { version, files } = options
 
-  await ensurePackages(['eslint-plugin-vue', 'vue-eslint-parser']);
+  await ensurePackages(['eslint-plugin-vue', 'vue-eslint-parser'])
 
-  type VueConfigKey = import('eslint-plugin-vue').VueConfigKey;
+  type VueConfigKey = import('eslint-plugin-vue').VueConfigKey
 
   const [pluginVue, parserVue, pluginTs] = await Promise.all([
     interopDefault(import('eslint-plugin-vue')),
     interopDefault(import('vue-eslint-parser')),
     interopDefault(import('@typescript-eslint/eslint-plugin'))
-  ]);
+  ])
 
-  const tsRules = await createTsRules();
+  const tsRules = await createTsRules()
 
   const configKeys: VueConfigKey[] =
     version === 3
-      ? ['vue3-essential', 'vue3-strongly-recommended', 'vue3-recommended']
-      : ['essential', 'strongly-recommended', 'recommended'];
+      ? ['essential', 'strongly-recommended', 'recommended']
+      : ['vue2-essential', 'vue2-strongly-recommended', 'vue2-recommended']
 
   const vueRules = configKeys.reduce((preRules, key) => {
-    const config = pluginVue.configs[key];
+    const config = pluginVue.configs[key]
     return {
       ...preRules,
       ...config.rules
-    };
-  }, {});
+    }
+  }, {})
 
   const configs: FlatConfigItem[] = [
     {
@@ -59,7 +59,7 @@ export async function createVueConfig(options?: RequiredVueOptions, overrides: R
         ...tsRules,
         ...pluginVue.configs.base.rules,
         ...vueRules,
-        'vue/block-order': ['warn', { order: ['script', 'template', 'style'] }],
+        'vue/block-order': ['warn', { order: ['template', 'script', 'style'] }],
         'vue/component-api-style': ['warn', ['script-setup', 'composition']],
         'vue/component-name-in-template-casing': [
           'warn',
@@ -70,15 +70,14 @@ export async function createVueConfig(options?: RequiredVueOptions, overrides: R
         'vue/custom-event-name-casing': ['warn', 'camelCase'],
         'vue/define-emits-declaration': ['warn', 'type-based'],
         'vue/define-macros-order': 'off',
-        // 'vue/define-macros-order': [
-        //   'warn',
-        //   {
-        //     order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots']
-        //   }
-        // ],
         'vue/define-props-declaration': ['warn', 'type-based'],
         'vue/html-comment-content-newline': 'warn',
-        'vue/multi-word-component-names': 'warn',
+        'vue/multi-word-component-names': [
+          'warn',
+          {
+            ignores: ['index', 'App', '[id]']
+          }
+        ],
         'vue/next-tick-style': ['warn', 'promise'],
         'vue/no-duplicate-attr-inheritance': 'warn',
         'vue/no-required-prop-with-default': 'warn',
@@ -113,7 +112,7 @@ export async function createVueConfig(options?: RequiredVueOptions, overrides: R
         ...overrides
       }
     }
-  ];
+  ]
 
-  return configs;
+  return configs
 }

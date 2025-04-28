@@ -1,11 +1,11 @@
-import { interopDefault } from '../shared';
-import { GLOB_SRC } from '../constants/glob';
-import type { FlatConfigItem } from '../types';
+import { interopDefault } from '../shared'
+import { GLOB_SRC } from '../constants'
+import type { FlatConfigItem } from '../types'
 
 export async function createTsRules(): Promise<FlatConfigItem['rules']> {
-  const pluginTs = await interopDefault(import('@typescript-eslint/eslint-plugin'));
+  const pluginTs = await interopDefault(import('@typescript-eslint/eslint-plugin'))
 
-  const { rules: recommendedRules } = pluginTs.configs['eslint-recommended'].overrides![0];
+  const { rules: recommendedRules } = pluginTs.configs['eslint-recommended'].overrides![0]
 
   const tsRules = {
     ...pluginTs.configs.base.rules,
@@ -43,18 +43,18 @@ export async function createTsRules(): Promise<FlatConfigItem['rules']> {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/unified-signatures': 'off'
-  };
+  }
 
-  return tsRules as unknown as FlatConfigItem['rules'];
+  return tsRules as unknown as FlatConfigItem['rules']
 }
 
 export async function createTsConfig(overrides: Record<string, string> = {}) {
   const [pluginTs, parserTs] = await Promise.all([
     interopDefault(import('@typescript-eslint/eslint-plugin')),
     interopDefault(import('@typescript-eslint/parser'))
-  ]);
+  ])
 
-  const tsRules = await createTsRules();
+  const tsRules = await createTsRules()
 
   const ts: FlatConfigItem[] = [
     {
@@ -80,7 +80,7 @@ export async function createTsConfig(overrides: Record<string, string> = {}) {
         '@typescript-eslint/no-var-requires': 'off'
       }
     }
-  ];
+  ]
 
-  return ts;
+  return ts
 }

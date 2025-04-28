@@ -1,15 +1,15 @@
-import { interopDefault } from "../shared";
-import { FlatConfigItem } from "../types";
+import { interopDefault } from '../shared'
+import type { FlatConfigItem } from '../types'
 
-export async function createNodeConfig(overrides:Record<string,string>={}) {
-  const pluginNode=await interopDefault(import('eslint-plugin-n'))
+export async function createNodeConfig(overrides: Record<string, string> = {}) {
+  const pluginNode = await interopDefault(import('eslint-plugin-n'))
 
-  const configs:FlatConfigItem[]=[
+  const configs: FlatConfigItem[] = [
     {
-      plugins:{
-        n:pluginNode
+      plugins: {
+        n: pluginNode
       },
-      rules:{
+      rules: {
         'n/handle-callback-err': ['error', '^(err|error)$'],
         'n/no-deprecated-api': 'error',
         'n/no-exports-assign': 'error',
@@ -22,5 +22,6 @@ export async function createNodeConfig(overrides:Record<string,string>={}) {
       }
     }
   ]
+
   return configs
 }
