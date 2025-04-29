@@ -26,7 +26,7 @@
     "cm": "git add . && dy git-commit -l=zh-cn",
     "lint": "eslint . --fix",
     "ncu": "dy ncu",
-    "publish-pkg": "npm publish --access public",
+    "publish-pkg": "pnpm run build && npm publish --access public",
     "release": "dy release",
     "typecheck": "tsc --noEmit --skipLibCheck"
   },

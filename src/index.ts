@@ -50,7 +50,6 @@ export async function defineConfig(options: Partial<Options> = {}, ...userConfig
     ...prettier,
     ...formatter
   ]
-
   return configs
 }
 
