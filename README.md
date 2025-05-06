@@ -7,8 +7,9 @@ pnpm install eslint @dylanjs/eslint-config -D
 ```
 
 项目根目录下创建`eslint.config.js`文件：
+
 ```js
-import {defineConfig} from '@dylanjs/eslint-config'
+import { defineConfig } from '@dylanjs/eslint-config'
 export default defineConfig({
   vue: true,
   react: { files: ['**/*react.tsx'] },

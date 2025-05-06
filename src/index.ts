@@ -7,6 +7,7 @@ import {
   createJsConfig,
   createNodeConfig,
   createPrettierConfig,
+  createReactConfig,
   createTsConfig,
   createVueConfig
 } from './configs'
@@ -33,6 +34,8 @@ export async function defineConfig(options: Partial<Options> = {}, ...userConfig
 
   const vue = await createVueConfig(opts.vue, overrideRecord.vue)
 
+  const react = await createReactConfig(opts.react, overrideRecord.react)
+
   const prettier = await createPrettierConfig(opts.prettierRules)
   const formatter = await createFormatterConfig(opts.formatter, opts.prettierRules)
 
@@ -46,6 +49,7 @@ export async function defineConfig(options: Partial<Options> = {}, ...userConfig
     ...imp,
     ...ts,
     ...vue,
+    ...react,
     ...userResolved,
     ...prettier,
     ...formatter
